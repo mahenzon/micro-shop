@@ -74,7 +74,7 @@ def validate_auth_user(
 def get_current_token_payload(
     # credentials: HTTPAuthorizationCredentials = Depends(http_bearer),
     token: str = Depends(oauth2_scheme),
-) -> UserSchema:
+) -> dict:
     # token = credentials.credentials
     try:
         payload = auth_utils.decode_jwt(

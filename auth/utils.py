@@ -15,7 +15,7 @@ def encode_jwt(
     algorithm: str = settings.auth_jwt.algorithm,
     expire_minutes: int = settings.auth_jwt.access_token_expire_minutes,
     expire_timedelta: timedelta | None = None,
-):
+) -> str:
     to_encode = payload.copy()
     now = datetime.utcnow()
     if expire_timedelta:
@@ -38,7 +38,7 @@ def decode_jwt(
     token: str | bytes,
     public_key: str = settings.auth_jwt.public_key_path.read_text(),
     algorithm: str = settings.auth_jwt.algorithm,
-):
+) -> dict:
     decoded = jwt.decode(
         token,
         public_key,

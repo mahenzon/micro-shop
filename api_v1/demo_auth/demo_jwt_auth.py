@@ -57,6 +57,7 @@ def auth_user_issue_jwt(
     response_model_exclude_none=True,
 )
 def auth_refresh_jwt(
+    # todo: validate user is active!!
     user: UserSchema = Depends(get_current_auth_user_for_refresh),
     # user: UserSchema = Depends(get_auth_user_from_token_of_type(REFRESH_TOKEN_TYPE)),
     # user: UserSchema = Depends(UserGetterFromToken(REFRESH_TOKEN_TYPE)),
